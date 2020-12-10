@@ -22,7 +22,7 @@ class ProductsListPage extends Component {
 		// callApi('GET', null).then(res => {
 		// console.log('data = ', res.data)
 		console.log(getData())
-			if (this.state.data === null){
+			if (this.state.data	 === null){
 				getData().then((data) => {
 					this.setState ({
 					data : data
@@ -57,16 +57,18 @@ class ProductsListPage extends Component {
 	}
 
 	render () {
-		console.log('data trong state = ', this.state.data)
+		
 		// var { products } = this.props
 
-		var { products } = this.state
+		var { data } = this.state
+
+		console.log('data trong state render = ', data)
 
 		return (
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<Link to='/products/add' type="button" className="btn btn-info mb-10">Add Products</Link>
 				<ProductsList>
-					{/* { this.showProducts(products) } */}
+					{ this.showProducts() }
 				</ProductsList>
 			</div>
 		)
@@ -74,19 +76,20 @@ class ProductsListPage extends Component {
 
 	showProducts = () => {
 		if (this.state.data !== null){
-			return this.state.data.map((data, index) => {
-				return <ProductsItem
+			console.log('showProducts log = ', this.state.data)
+			return this.state.data.forEach((data, index) => {
+				return (<ProductsItem
 					key={index}
 					products={data}
 					index={index}
-				/>
+				/>)
 			})
 		}
 	}
 
-	// showProducts(products) {
+	// showProducts(products){
 	// 	var result = null
-	// 	if (products.length > 0) {
+	// 	if (products !== null) {
 	// 		result = products.map((products, index) =>{
 	// 			return <ProductsItem
 	// 				key={index}
