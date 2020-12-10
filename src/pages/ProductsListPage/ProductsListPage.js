@@ -76,8 +76,8 @@ class ProductsListPage extends Component {
 
 	showProducts = () => {
 		if (this.state.data !== null){
-			console.log('showProducts log = ', this.state.data)
-			return this.state.data.forEach((data, index) => {
+			console.log('showProducts log = ', this.state.data.data)
+			return this.state.data.data.map((data, index) => {
 				return (<ProductsItem
 					key={index}
 					products={data}
